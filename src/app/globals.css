@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --blush-pink: #F8E8E8;
+  --soft-blush: #FDF5F5;
+  --ivory: #FFFEF9;
+  --warm-beige: #E8DDD0;
+  --champagne-gold: #D4AF37;
+  --soft-gold: #E8D4A8;
+  --deep-gold: #B8963A;
+  --warm-white: #FAF8F5;
+  --charcoal: #2D2A26;
+  --soft-gray: #6B6560;
+  --rose: #E8C4C4;
+  --glass-bg: rgba(255, 254, 249, 0.7);
+  --glass-border: rgba(212, 175, 55, 0.15);
+}
+
+@theme inline {
+  --color-blush-pink: var(--blush-pink);
+  --color-soft-blush: var(--soft-blush);
+  --color-ivory: var(--ivory);
+  --color-warm-beige: var(--warm-beige);
+  --color-champagne-gold: var(--champagne-gold);
+  --color-soft-gold: var(--soft-gold);
+  --color-deep-gold: var(--deep-gold);
+  --color-warm-white: var(--warm-white);
+  --color-charcoal: var(--charcoal);
+  --color-soft-gray: var(--soft-gray);
+  --color-rose: var(--rose);
+  --font-display: 'Playfair Display', serif;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+.paper-texture {
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-blend-mode: soft-light;
+  opacity: 0.03;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, var(--champagne-gold) 0%, var(--deep-gold) 50%, var(--champagne-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.floral-border {
+  position: relative;
+}
+
+.floral-border::before,
+.floral-border::after {
+  content: '❧';
+  position: absolute;
+  color: var(--soft-gold);
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+.floral-border::before {
+  left: 1rem;
+  top: -0.5rem;
+}
+
+.floral-border::after {
+  right: 1rem;
+  bottom: -0.5rem;
+  transform: rotate(180deg);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+input, select, textarea {
+  font-family: 'DM Sans', sans-serif;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--soft-gray);
+  opacity: 0.7;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--champagne-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--soft-blush);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--soft-gold);
+  border-radius: 2px;
+}
