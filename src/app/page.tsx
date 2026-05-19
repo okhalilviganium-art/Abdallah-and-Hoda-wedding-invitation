@@ -277,7 +277,7 @@ function LocationSection() {
           width: "100%",
           height: "100%",
           border: "none",
-          filter: "grayscale(30%) brightness(0.9)",
+          filter: "grayscale(15%) brightness(0.97) contrast(1.02)",
         }}
         allowFullScreen
         loading="lazy"
@@ -288,7 +288,7 @@ function LocationSection() {
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(to bottom, rgba(255,254,249,0.85) 0%, rgba(255,254,249,0.95) 100%)",
+            "linear-gradient(to bottom, rgba(255,254,249,0.68) 0%, rgba(255,254,249,0.78) 100%)",
         }}
       />
 
