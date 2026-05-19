@@ -29,7 +29,6 @@ function useCountdown() {
     };
 
     update();
-
     const interval = setInterval(update, 1000);
 
     return () => clearInterval(interval);
@@ -545,7 +544,35 @@ export default function WeddingInvitation() {
   const [stage, setStage] = useState<Stage>("poster");
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [whiteTransition, setWhiteTransition] = useState(false);
+
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const wasPlayingBeforeHidden = useRef(false);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!audioRef.current) return;
+
+      if (document.hidden) {
+        wasPlayingBeforeHidden.current = !audioRef.current.paused;
+        audioRef.current.pause();
+      } else if (wasPlayingBeforeHidden.current) {
+        audioRef.current.play().catch(() => {});
+      }
+    };
+
+    const handlePageHide = () => {
+      if (!audioRef.current) return;
+      audioRef.current.pause();
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("pagehide", handlePageHide);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("pagehide", handlePageHide);
+    };
+  }, []);
 
   async function playMusic() {
     if (!audioRef.current) return;
@@ -582,7 +609,7 @@ export default function WeddingInvitation() {
       audioRef.current.pause();
       setMusicPlaying(false);
     } else {
-      audioRef.current.play();
+      audioRef.current.play().catch(() => {});
       setMusicPlaying(true);
     }
   }
