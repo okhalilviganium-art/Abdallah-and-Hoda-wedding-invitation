@@ -270,7 +270,7 @@ function LocationSection() {
       }}
     >
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.8!2d31.2!3d30.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsMDAnNDAuNCTiAzMcKwMTInMDAuMCJF!5e0!3m2!1sen!2seg!4v1234567890"
+        src="https://www.google.com/maps?q=InterContinental%20Cairo%20Semiramis%20by%20IHG&z=16&output=embed"
         style={{
           position: "absolute",
           inset: 0,
@@ -337,11 +337,11 @@ function LocationSection() {
             marginBottom: 32,
           }}
         >
-          35 El-Gaish Road, Heliopolis, Cairo
+          InterContinental Cairo Semiramis
         </p>
 
         <a
-          href="https://maps.google.com/?q=Semiramis+Intercontinental+Cairo"
+          href="https://www.google.com/maps/search/?api=1&query=InterContinental+Cairo+Semiramis+by+IHG"
           target="_blank"
           rel="noopener noreferrer"
           style={{
