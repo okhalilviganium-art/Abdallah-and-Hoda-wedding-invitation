@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Abdallah & Hoda",
-  description: "You're invited to celebrate the wedding of Mazen & Diana",
+  description: "You're invited to celebrate the wedding of Abdallah & Hoda",
 };
 
 export default function RootLayout({
