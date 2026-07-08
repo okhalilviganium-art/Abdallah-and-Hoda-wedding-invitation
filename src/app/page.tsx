@@ -546,6 +546,7 @@ export default function WeddingInvitation() {
   const [whiteTransition, setWhiteTransition] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const wasPlayingBeforeHidden = useRef(false);
 
   useEffect(() => {
@@ -587,6 +588,9 @@ export default function WeddingInvitation() {
 
   async function handleOpen() {
     await playMusic();
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
     setStage("envelopeVideo");
   }
 
@@ -635,13 +639,23 @@ export default function WeddingInvitation() {
           boxShadow: "0 20px 60px rgba(0,0,0,0.12)",
         }}
       >
-        {stage === "poster" && (
-          <section
+        <section
+          style={{
+            width: "100%",
+            minHeight: "100vh",
+            position: "relative",
+            background: "#fff",
+            display: stage === "content" ? "none" : "block",
+          }}
+        >
+          <div
             style={{
-              width: "100%",
-              minHeight: "100vh",
-              position: "relative",
-              background: "#fff",
+              position: "absolute",
+              inset: 0,
+              zIndex: 2,
+              opacity: stage === "poster" ? 1 : 0,
+              transition: "opacity 0.4s ease",
+              pointerEvents: stage === "poster" ? "auto" : "none",
             }}
           >
             <img
@@ -686,37 +700,28 @@ export default function WeddingInvitation() {
             >
               Tap to open
             </div>
-          </section>
-        )}
+          </div>
 
-        {stage === "envelopeVideo" && (
-          <section
+          <video
+            ref={videoRef}
+            src="/videos/envelope-open.mp4"
+            muted
+            playsInline
+            preload="auto"
+            onEnded={handleEnvelopeEnd}
+            onError={handleEnvelopeEnd}
             style={{
+              position: "absolute",
+              inset: 0,
               width: "100%",
-              minHeight: "100vh",
-              position: "relative",
+              height: "100%",
+              objectFit: "cover",
               background: "#fff",
+              opacity: stage === "poster" ? 0 : 1,
+              transition: "opacity 0.4s ease",
             }}
-          >
-            <video
-              src="/videos/envelope-open.mp4"
-              autoPlay
-              muted
-              playsInline
-              preload="auto"
-              onEnded={handleEnvelopeEnd}
-              onError={handleEnvelopeEnd}
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                background: "#fff",
-              }}
-            />
-          </section>
-        )}
+          />
+        </section>
 
         {stage === "content" && (
           <div
