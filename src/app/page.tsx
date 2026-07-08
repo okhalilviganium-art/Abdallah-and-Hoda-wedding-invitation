@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react";
 
 type Stage = "poster" | "envelopeVideo" | "content";
 
-const WEDDING_DATE = new Date("2026-07-31T20:00:00");
+const WEDDING_DATE = new Date("2026-07-17T15:00:00");
 
 function useCountdown() {
   const [timeLeft, setTimeLeft] = useState({
@@ -106,7 +106,7 @@ function CountdownSection() {
           marginBottom: 32,
         }}
       >
-        31 July 2026
+        17 July 2026
       </h2>
 
       <div
@@ -199,9 +199,9 @@ function EventDetails() {
 
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         {[
-          { label: "Date", value: "Friday, 31 July 2026" },
-          { label: "Time", value: "8:00 PM" },
-          { label: "Venue", value: "Semiramis Intercontinental Cairo" },
+          { label: "Date", value: "Friday, 17 July 2026" },
+          { label: "Time", value: "3 PM" },
+          { label: "Venue", value: "El Maghfira Mosque" },
         ].map(({ label, value }) => (
           <div key={label}>
             <p
@@ -270,7 +270,7 @@ function LocationSection() {
       }}
     >
       <iframe
-        src="https://www.google.com/maps?q=InterContinental%20Cairo%20Semiramis%20by%20IHG&z=16&output=embed"
+        src="https://www.google.com/maps?q=30.0612855,31.2121431&z=16&output=embed"
         style={{
           position: "absolute",
           inset: 0,
@@ -326,7 +326,7 @@ function LocationSection() {
             marginBottom: 8,
           }}
         >
-          Semiramis Intercontinental Cairo
+          El Maghfira Mosque
         </h2>
 
         <p
@@ -337,11 +337,11 @@ function LocationSection() {
             marginBottom: 32,
           }}
         >
-          InterContinental Cairo Semiramis
+          El Maghfira Mosque
         </p>
 
         <a
-          href="https://www.google.com/maps/search/?api=1&query=InterContinental+Cairo+Semiramis+by+IHG"
+          href="https://maps.app.goo.gl/chGutF1mEF5yJ1vX7"
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -430,7 +430,7 @@ function ClosingSection() {
             color: "#b47a28",
           }}
         >
-          M & D
+          A & H
         </span>
       </div>
 
@@ -455,7 +455,7 @@ function ClosingSection() {
           marginBottom: 24,
         }}
       >
-        We can't wait to celebrate with you
+        We can&apos;t wait to celebrate with you
       </p>
 
       <div
@@ -729,7 +729,6 @@ export default function WeddingInvitation() {
             <CountdownSection />
             <EventDetails />
             <LocationSection />
-            <GallerySection />
             <ClosingSection />
           </div>
         )}
